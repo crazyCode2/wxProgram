@@ -1,0 +1,25 @@
+<!--pages/group/group.wxml-->
+<!--主盒子-->  
+<view class="container">  
+  <!--head-->  
+  <view class="tit">  
+    <view class="title_val">公示栏</view>  
+    <view class="more">更多</view>  
+  </view>  
+  <!--list-->  
+  <view class="goodslist">  
+    <!--item-->  
+    <block wx:for="{{goodslist}}" wx:key="id">  
+      <view class="goods">
+        <!--上--文字说明-->  
+        <view class="good-name">  
+          <text>{{item.name}}</text>  
+        </view>  
+        <!--下--价格部分-->  
+        <view class="good-price">  
+          <text>{{item.price}}</text>
+        </view>
+      </view>  
+    </block>  
+  </view>  
+</view>

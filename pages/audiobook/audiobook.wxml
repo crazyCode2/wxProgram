@@ -1,0 +1,39 @@
+<!--pages/audiobook/audiobook.wxml-->
+<!--主盒子-->  
+<view class="container">
+  <!--head-->  
+  <view class="tit">  
+    <view class="title_val">通关状态</view>  
+    <view class="more">更多</view>  
+  </view>
+  <!--左侧栏-->  
+  <view class="nav_left">  
+    <block wx:for="{{navLeftItems}}" wx:key="id">  
+      <!--当前项的id等于item项的id，那个就是当前状态-->  
+      <!--用data-index记录这个数据在数组的下标位置，使用data-id设置每个item的id值，供打开2级页面使用-->  
+      <view class="nav_left_items {{curNav == item.id ? 'active' : ''}}" bindtap="switchRightTab" data-index="{{index}}" data-id="{{item.id}}">{{item.desc}}</view>  
+    </block>  
+  </view>  
+  <!--右侧栏-->  
+  <view class="nav_right">  
+    <!--如果有数据，才遍历项-->  
+    <view wx:if="{{navRightItems[curIndex]}}">  
+      <block>  
+        <view>  
+          <text>旅客出境：约需等待{{navRightItems[curIndex].outboundPassengers}}分钟</text>
+        </view>
+        <view>
+          <text>旅客入境：约需等待{{navRightItems[curIndex].entryPassengers}}分钟</text>
+        </view>
+        <view wx:if="{{navRightItems[curIndex].outboundCars}}">
+          <text>车辆出境：约需等待{{navRightItems[curIndex].outboundCars}}分钟</text>
+        </view>
+        <view wx:if="{{navRightItems[curIndex].entryCars}}">
+          <text>车辆入境：约需等待{{navRightItems[curIndex].entryCars}}分钟</text>
+        </view>
+      </block>  
+    </view>  
+    <!--如果无数据，则显示数据-->  
+    <view wx:else>暂无数据</view>  
+  </view>  
+</view>
